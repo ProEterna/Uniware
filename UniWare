@@ -1,0 +1,65 @@
+        local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("UniWare V2", "Synapse")
+
+local Tab = Window:NewTab("Supported Scripts")
+
+local Section = Tab:NewSection("Tower Of Hell | Status 🟢")
+
+local Section = Tab:NewSection("Prison Life | Status 🟢")
+
+local Section = Tab:NewSection("Bedwars | Status 🔴")
+
+local Section = Tab:NewSection("Flag Wars | Status 🟢")
+
+local Section = Tab:NewSection("Be A Parkour Ninja | Status 🟢")
+
+local Tab = Window:NewTab("Home")
+local Section = Tab:NewSection("BUTTONS")
+
+Section:NewButton("insta - Win", "ButtonInfo", function()
+    for _,v in pairs(game:GetService("Workspace").tower.finishes:GetChildren()) do
+        if _ == 1 and v.Name == "Finish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v.Position)
+            end
+        end
+end)
+
+Section:NewButton("Godmode", "ButtonInfo", function()
+    for i,v in pairs(workspace.tower:GetDescendants()) do
+        if v.Name == "kills" then
+            print(v.Parent)
+            v:Destroy()
+        end
+    end
+end)
+
+Section:NewButton("Remove Lasers", "ButtonInfo", function()
+    for k,v in pairs(game:GetService("Workspace").tower:GetDescendants()) do
+        if string.match(v.Name,"kill") then
+            print(v)
+            v:Destroy()
+            end
+        end
+end)
+
+Section:NewButton("Crash Anti-cheat local script", "ButtonInfo", function()
+    for _,v in pairs(getgc()) do
+        if type(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.LocalScript then
+            if debug.getinfo(v).name == "kick" then
+            hookfunction(v, function(...)
+                end)
+            end
+        end
+    end
+
+    for _,v in pairs(getgc()) do
+        if type(v) == "function" and getfenv(v).script == game:GetService("Players").LocalPlayer.PlayerScripts.LocalScript2 then
+            if debug.getinfo(v).name == "FindFirstChild" then
+            hookfunction(v, function(...)
+                    end)
+                end
+            end
+    end
+    game:GetService("Players").LocalPlayer.PlayerScripts.LocalPartScript:Destroy()
+    end
+    end)
